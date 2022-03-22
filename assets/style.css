@@ -3,3 +3,38 @@
     color: #ffffff;
     
 }
+body {
+    flex: auto;
+}
+.quiz-header{
+    outline: greenyellow solid 5px;
+}
+
+.quiz-header h1 {
+    text-align: center;
+    outline: red solid 5px;
+    margin: 10px;
+}
+
+.quiz-header p {
+    text-align: center;
+    outline: royalblue solid 5px;
+    margin: 10px;
+}
+
+.leaderboard {
+    padding: 20px;
+    outline: greenyellow solid 5px;
+    width: 50%;
+    display: inline-block;
+}
+.start-quiz button:click {
+    color: green;
+    background-color:greenyellow;
+}
+.question-box {
+    padding: 20px;
+    outline: greenyellow solid 5px;
+    width: 50%;
+    display: flex;
+}
