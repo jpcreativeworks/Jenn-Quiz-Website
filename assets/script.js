@@ -26,6 +26,14 @@ let ansOpt1 = document.querySelector(".answer-opt1")
 let ansOpt2 = document.querySelector(".answer-opt2")
 let ansOpt3 = document.querySelector(".answer-opt3")
 let mainQ = document.querySelector(".main-question")
+ansOpt1.addEventListener("click", checkAnswer);
+ansOpt2.addEventListener("click", checkAnswer);
+ansOpt3.addEventListener("click", checkAnswer);
+let theTimer = 0;
+let timerCount = 60;
+let timeScore = 0;
+let timerElmt = document.querySelector(".the-timer");
+let rightWrong = document.querySelector(".right-wrong");
 
 //let mainQuestion1 = [];
 //let mainAnswer1 = ["JavaScript", "HTML", "CSS"];
@@ -40,6 +48,15 @@ startQuiz.addEventListener("click", function () {
     leaderBoard.classList.remove("hiddenElmt");
     questionBox.classList.remove('hiddenElmt');
     startQuiz.classList.add("hiddenElmt");
+    theTimer = setInterval(function() {
+        timerElmt.textContent = timerCount
+        if (timerCount >= 1) {
+            timerCount -- 
+        } else {
+            timerElmt.textContent = "time up!"
+            clearInterval(timerElmt);
+        }
+    },1000)
     beginQuizzing() 
 })
 
@@ -50,3 +67,21 @@ function beginQuizzing() {
   ansOpt3.innerText = questionsDB[setIndex].choices[2];
 
 }
+function checkAnswer() {
+    let correctAns1 = this.getAttribute("data-index")
+    console.log(correctAns1);
+    if (parseInt(correctAns1) === questionsDB[setIndex].trueAnswer) {
+        rightWrong.textContent = "Good Choice!";
+        timeScore +=10;
+    } else {
+        rightWrong.textContent = "Nice Try...";
+        timerCount -=10;
+    }
+    if (setIndex < questionsDB.length - 1) {
+        setIndex ++ ;
+        beginQuizzing()
+    }else{
+        timerElmt.textContent = "you're done!"
+        clearInterval(timerElmt);  
+    }
+} 
