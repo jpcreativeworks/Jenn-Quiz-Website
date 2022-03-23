@@ -38,3 +38,7 @@ body {
     width: 50%;
     display: flex;
 }
+
+.hiddenElmt {
+    display: none;
+}
