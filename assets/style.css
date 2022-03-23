@@ -42,3 +42,7 @@ body {
 .hiddenElmt {
     display: none;
 }
+
+.displayElmt {
+    display: block;
+}
