@@ -34,6 +34,10 @@ let timerCount = 60;
 let timeScore = 0;
 let timerElmt = document.querySelector(".the-timer");
 let rightWrong = document.querySelector(".right-wrong");
+let userScore = document.querySelector(".score-container")
+let resultsBox = document.getElementById("results-box")
+resultsBox.classList.add("hiddenElmt")
+
 
 //let mainQuestion1 = [];
 //let mainAnswer1 = ["JavaScript", "HTML", "CSS"];
@@ -55,6 +59,7 @@ startQuiz.addEventListener("click", function () {
         } else {
             timerElmt.textContent = "time up!"
             clearInterval(timerElmt);
+            userScore.textContent = timeScore
         }
     },1000)
     beginQuizzing() 
@@ -83,5 +88,9 @@ function checkAnswer() {
     }else{
         timerElmt.textContent = "you're done!"
         clearInterval(timerElmt);  
+        resultsBox.classList.remove("hiddenElmt")
+        
+        questionBox.classList.add('hiddenElmt');
+        userScore.textContent = timeScore
     }
 } 
