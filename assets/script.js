@@ -36,7 +36,18 @@ let timerElmt = document.querySelector(".the-timer");
 let rightWrong = document.querySelector(".right-wrong");
 let userScore = document.querySelector(".score-container")
 let resultsBox = document.getElementById("results-box")
-resultsBox.classList.add("hiddenElmt")
+resultsBox.classList.add("hiddenElmt");
+let saveUser = document.getElementById("saveuser");
+let userInput = document.getElementById("user");
+saveUser.addEventListener("click", function() {
+    let userData = {
+        user: userInput.value,
+        score: timeScore,
+        timeLeft: timerCount
+    }
+    localStorage.setItem("popquiz", JSON.stringify(userData));
+    document.querySelector(".name-container").textContent= userInput.value
+})
 
 
 //let mainQuestion1 = [];
@@ -94,3 +105,5 @@ function checkAnswer() {
         userScore.textContent = timeScore
     }
 } 
+
+
